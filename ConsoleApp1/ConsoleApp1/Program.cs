@@ -3,19 +3,11 @@ namespace TicTacToe
 {
     class Program
     {
-        static int[] board = new int[9];
+        static int[] board = { 0, 0, 0, 0, 0, 0, 0, 0, 0,0 };
         static void Main(string[] args)
         {
-
-            board[0] = 0;
-            board[1] = 0;
-            board[2] = 0;
-            board[3] = 0;
-            board[4] = 0;
-            board[5] = 0;
-            board[6] = 0;
-            board[7] = 0;
-            board[8] = 0;
+            
+            
 
             int User_1 = -1;
             int User_2 = -1;
@@ -27,7 +19,7 @@ namespace TicTacToe
 
                 while (User_1 == -1 || board[User_1] != 0)
                 {
-                    Console.WriteLine("1st player enter number from 0-8");
+                    Console.WriteLine("1st player enter number from 1-8");
                     User_1 = int.Parse(Console.ReadLine());
                     Console.WriteLine("First player  typed:" + User_1);
 
@@ -42,7 +34,7 @@ namespace TicTacToe
                 printBoard();
                 while (User_2 == -1 || board[User_2] != 0)
                 {
-                    Console.WriteLine("2nd player enter number from 0-8");
+                    Console.WriteLine("2nd player enter number from 1-8");
                     User_2 = int.Parse(Console.ReadLine());
                     Console.WriteLine("Second player typed:" + User_2);
 
@@ -108,7 +100,7 @@ namespace TicTacToe
 
         private static void printBoard()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 1; i < 10; i++)
             {
                 if (board[i] == 0)
                 {
