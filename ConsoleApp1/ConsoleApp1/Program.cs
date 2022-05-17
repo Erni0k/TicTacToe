@@ -16,83 +16,124 @@ namespace TicTacToe
 
             while (Win == 0)
             {
-
-                while (User_1 == -1 || board[User_1] != 0)
+                try
                 {
-                    Console.WriteLine("1st player enter number from 1-8");
-                    User_1 = int.Parse(Console.ReadLine());
-                    Console.WriteLine("First player  typed:" + User_1);
+                    while (User_1 == -1 || board[User_1] != 0)
+                    {
+                        Console.WriteLine("1st player enter number from 1-8");
+                        User_1 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("First player  typed:" + User_1);
 
 
+                    }
+                    Console.Clear();
+                    board[User_1] = 1;
+                    if (WinnerCheck() != 0)
+                    {
+                        break;
+                    }
                 }
-                Console.Clear();
-                board[User_1] = 1;
-                if (WinnerCheck() != 0)
+                catch (Exception ex)
                 {
-                    break;
+                    while (User_1 == -1 || board[User_1] != 0)
+                    {
+                        Console.WriteLine("1st player enter number from 1-8");
+                        User_1 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("First player  typed:" + User_1);
+
+
+                    }
+                    Console.Clear();
+                    board[User_1] = 1;
+                    if (WinnerCheck() != 0)
+                    {
+                        break;
+                    }
                 }
-                printBoard();
-                while (User_2 == -1 || board[User_2] != 0)
+                try
                 {
-                    Console.WriteLine("2nd player enter number from 1-8");
-                    User_2 = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Second player typed:" + User_2);
+                    printBoard();
+                    while (User_2 == -1 || board[User_2] != 0)
+                    {
+                        Console.WriteLine("2nd player enter number from 1-8");
+                        User_2 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Second player typed:" + User_2);
 
 
+                    }
+                    board[User_2] = 2;
+                    if (WinnerCheck() != 0)
+                    {
+                        break;
+                    }
+                    Console.Clear();
+                    printBoard();
+                    Win = WinnerCheck();
                 }
-                board[User_2] = 2;
-                if (WinnerCheck() != 0)
+                catch (Exception ex)
                 {
-                    break;
-                }
-                Console.Clear();
-                printBoard();
-                Win = WinnerCheck();
+                    printBoard();
+                    while (User_2 == -1 || board[User_2] != 0)
+                    {
+                        Console.WriteLine("2nd player enter number from 1-8");
+                        User_2 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Second player typed:" + User_2);
 
+
+                    }
+                    board[User_2] = 2;
+                    if (WinnerCheck() != 0)
+                    {
+                        break;
+                    }
+                    Console.Clear();
+                    printBoard();
+                    Win = WinnerCheck();
+                }
             }
             printBoard();
             Console.WriteLine("Player " + WinnerCheck() + " " + "won the game!");
         }
         private static int WinnerCheck()
         {   //1st row
-            if (board[0] == board[1] && board[1] == board[2])
+            if (board[1] == board[2] && board[2] == board[3])
             {
-                return board[0];
+                return board[1];
             }
             //2nd row
-            else if (board[3] == board[4] && board[4] == board[5])
+            else if (board[4] == board[5] && board[5] == board[6])
             {
-                return board[3];
+                return board[4];
             }
             //3rd row
-            else if (board[6] == board[7] && board[7] == board[8])
+            else if (board[7] == board[8] && board[8] == board[9])
             {
-                return board[6];
+                return board[7];
             }
             //1st column
-            else if (board[0] == board[3] && board[3] == board[6])
-            {
-                return board[0];
-            }
-            //2nd column
             else if (board[1] == board[4] && board[4] == board[7])
             {
                 return board[1];
             }
-            //3rd column
+            //2nd column
             else if (board[2] == board[5] && board[5] == board[8])
             {
                 return board[2];
             }
-            //1st diagonal
-            else if (board[0] == board[4] && board[4] == board[8])
+            //3rd column
+            else if (board[3] == board[6] && board[6] == board[9])
             {
-                return board[0];
+                return board[3];
+            }
+            //1st diagonal
+            else if (board[1] == board[5] && board[5] == board[9])
+            {
+                return board[1];
             }
             //2nd diagonal
-            else if (board[2] == board[4] && board[4] == board[6])
+            else if (board[3] == board[5] && board[5] == board[7])
             {
-                return board[2];
+                return board[3];
             }
 
             return 0;
@@ -114,7 +155,7 @@ namespace TicTacToe
                 {
                     Console.Write("O");
                 }
-                if (i == 2 || i == 5 || i == 8)
+                if (i == 3 || i == 6 || i == 9)
                 {
                     Console.WriteLine();
                 }
